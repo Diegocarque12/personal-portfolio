@@ -1,0 +1,125 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/Badge.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+import LinkedInIcon from "../../components/icons/LinkedIn.astro";
+import CVIcon from "../../components/icons/CV.astro";
+import SocialPill from "../../components/SocialPill.astro";
+import GitHubIcon from "../../components/icons/GitHub.astro";
+import MailIcon from "../../components/icons/Mail.astro";
+import Experience from "../../components/Experience.astro";
+import Briefcase from "../../components/icons/Briefcase.astro";
+import CodeIcon from "../../components/icons/Code.astro";
+import Projects from "../../components/Projects.astro";
+import ToTop from "../../components/ToTop.astro";
+---
+
+<Layout
+  title="Luis Diego Carvajal Portfolio - Web Developer with +3 years of experience"
+  description="In this portfolio I gonna show my projects, experiencie and some information about me. I gave access to my email address and a Curriculum Vitae download's button."
+>
+  <main class="px-8 md:px-6">
+    <SectionContainer class="py-8 lg:py-44 pb-4">
+      <img
+        class="rounded-full size-20 md:size-12 mb-4"
+        src="/diego.webp"
+        alt="diego photo"
+      />
+      <div class="flex flex-col md:flex-row md:items-center mb-6">
+        <h1
+          class="text-gray-900 text-white text-5xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 md:pb-0"
+        >
+          Diego Carvajal<a
+            href="https://linkedin.com/in/luis-diego-carvajal"
+            target="_blank"
+            rel="noopener"
+            class="flex justify-center items-center"
+          >
+          </a>
+        </h1>
+        <Badge>Available to work</Badge>
+      </div>
+      <h2
+        class="text-xl lg:text-2xl text-balance max-w-[700px] text-black text-white"
+      >
+        <span class="text-[#f5a64b]">+3 years of experiencie.</span><span
+          class="text-red-200"
+        >
+          Web Developer</span
+        >.<span> From Costa Rica</span>.
+        <span>Organized, Creative and with learning hungry.</span>
+      </h2>
+
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill href="https://linkedin.com/in/luis-diego-carvajal">
+          <CVIcon class="size-6 md:size-6" />
+          CV
+        </SocialPill>
+        <SocialPill href="https://linkedin.com/in/luis-diego-carvajal">
+          <LinkedInIcon class="size-6 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/Diegocarque12">
+          <GitHubIcon class="size-6 md:size-6" />
+          GitHub
+        </SocialPill>
+        <SocialPill href="mailto:diegocarque1213@gmail.com">
+          <MailIcon class="size-6 md:size-6" />
+          diegocarque1213@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experiencie" class="pb-4 pt-20">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 text-white/80"
+      >
+        <Briefcase class="size-7" />
+        Job Experiencie
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="projects" class="pb-4 pt-20">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 text-white/80"
+      >
+        <CodeIcon class="size-7" />
+        Projects
+      </h2>
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="contact-us" class="pb-4 pt-20">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 text-white/80"
+      >
+        <CodeIcon class="size-7" />
+        About me
+      </h2>
+
+      <div class="flex flex-col md:flex-row md:gap-4 gap-8">
+        <article class="w-full md:w-2/4">
+          <p class="mb-4 md:mb-2">
+            Además del software, he disfrutado de diferentes disciplinas como el
+            baile especificamente salsa y bachata. En el año 2023 ganamos dos
+            primeros lugares en un mundial de baile.
+          </p>
+          <p class="mb-4 md:mb-2">
+            Antes de eso fuí voluntario de Cruz Roja Juventud por 7 años, de los
+            cuales, los últimos 2 años practiqué ilusionismo, participando en el
+            95 aniversario del mismo.
+          </p>
+          <p class="mb-4 md:mb-2">
+            Todos estos procesos me mantienen activo física y mentalmente,
+            permitiendome desarrollar diferentes habilidades y conseguir la
+            expertiz, comunicarme correctamente y con mis fortalezas más
+            grandes, mi curiosidad y las ganas de aprender.
+          </p>
+        </article>
+        <img class="w-full md:w-2/4" src="/projects/svgl.webp" alt="carousel" />
+      </div>
+    </SectionContainer>
+    <ToTop />
+  </main>
+</Layout>

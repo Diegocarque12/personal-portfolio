@@ -1,0 +1,81 @@
+---
+import ProjectLayout from "../../layouts/ProjectsLayout.astro";
+import Footer from "../../components/Footer.astro";
+
+export const getStaticPaths = () => {
+  return [
+    { params: { project: "dask" } },
+    { params: { project: "saint" } },
+    { params: { project: "cut-time" } },
+    { params: { project: "learny" } },
+  ];
+};
+
+const { project } = Astro.params;
+---
+
+<ProjectLayout
+  title="Portfolio de Luis Diego Carvajal - Desarrollador y Programador Web con +3 años de experiencia"
+  description="En este Portfolio muestro mis proyectos, experiencia y hablo un poco sobre mi. Además, dejo acceso a mi contacto, y un boton para descargar mi curriculum vitae."
+>
+  <main
+    class="flex
+    flex-col
+    xl:w-[1200px]
+    m-auto
+    items-center
+    relative z-10 bg-white shadow-2xl rounded-xl px-16 py-8"
+  >
+    <h1 class="text-5xl mt-8 mb-12">
+      <strong class="capitalize">{project}</strong>
+    </h1>
+
+    <div class="grid gap-4">
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg"
+          alt=""
+        />
+      </div>
+      <div class="grid grid-cols-5 gap-4">
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</ProjectLayout>

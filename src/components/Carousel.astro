@@ -1,0 +1,162 @@
+<div class="w-full md:flex items-center justify-center mt-20 hidden">
+  <div class="h-[30rem] flex flex-row flex-nowrap justify-center">
+    <input type="radio" name="slide" id="c1" checked />
+    <label for="c1" class="card">
+      <div class="row items-end">
+        <div class="icon">1</div>
+        <div class="description bg-black/80 p-4 pl-8 h-auto">
+          <h4 class="font-bold text-lg">Dask - Dancer academy administrator</h4>
+          <p class="text-sm text-gray-400 pt-2">Berlin, Germany</p>
+          <p class="text-white pb-2">
+            We offer IT project management works to help companies plan, execute
+            and effectively control IT projects.
+          </p>
+          <span class="font-bold">Work with</span>
+          <ul class="list-disc pl-4">
+            <li>Perl</li>
+            <li>SQL</li>
+            <li>C</li>
+          </ul>
+        </div>
+      </div>
+    </label>
+    <input type="radio" name="slide" id="c2" />
+    <label for="c2" class="card">
+      <div class="row items-end">
+        <div class="icon">2</div>
+        <div class="description bg-black/80 p-4 pl-8 h-auto">
+          <h4 class="font-bold text-lg">Digital Technology</h4>
+          <p class="text-sm text-gray-400 pt-2">
+            Gets better every day - stay tuned
+          </p>
+          <p class="text-white pb-2">lorem</p>
+          <span class="font-bold">Work with</span>
+          <ul class="list-disc pl-4">
+            <li>Perl</li>
+            <li>SQL</li>
+            <li>C</li>
+          </ul>
+        </div>
+      </div>
+    </label>
+    <input type="radio" name="slide" id="c3" />
+    <label for="c3" class="card">
+      <div class="row items-end">
+        <div class="icon">3</div>
+        <div class="description bg-black/80 p-4 pl-8 h-auto">
+          <h4 class="font-bold text-lg">Globalization</h4>
+          <p class="text-sm text-gray-400 pt-2">
+            Help people all over the world
+          </p>
+          <p class="text-white pb-2">lorem</p>
+          <span class="font-bold">Work with</span>
+          <ul class="list-disc pl-4">
+            <li>Perl</li>
+            <li>SQL</li>
+            <li>C</li>
+          </ul>
+        </div>
+      </div>
+    </label>
+    <!-- <input type="radio" name="slide" id="c4" />
+    <label for="c4" class="card">
+      <div class="row items-end">
+        <div class="icon">4</div>
+        <div class="description bg-black/80 p-4 pl-8 h-auto">
+          <h4 class="font-bold text-lg">New technologies</h4>
+          <p class="text-sm text-gray-400 pt-2">
+            Space engineering becomes more and more advanced
+          </p>
+          <p class="text-white pb-2">lorem</p>
+          <span class="font-bold">Work with</span>
+          <ul class="list-disc pl-4">
+            <li>Perl</li>
+            <li>SQL</li>
+            <li>C</li>
+          </ul>
+        </div>
+      </div>
+    </label> -->
+  </div>
+</div>
+
+<style>
+  .container {
+    height: 400px;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .card {
+    width: 80px;
+    background-size: cover;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+    transition: 0.6s cubic-bezier(0.28, -0.03, 0, 0.99);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8);
+  }
+
+  .card > .row {
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .card > .row > .icon {
+    background: #223;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+  }
+
+  .card > .row > .description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: auto;
+    width: 520px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition-delay: 0.3s;
+    transition: all 0.3s ease;
+  }
+
+  .description h4 {
+    text-transform: uppercase;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    width: 600px;
+  }
+
+  input:checked + label .description {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .card[for="c1"] {
+    background-image: url("/projects/svgl.webp");
+  }
+  .card[for="c2"] {
+    background-image: url("/projects/svgl.webp");
+  }
+  .card[for="c3"] {
+    background-image: url("/projects/svgl.webp");
+  }
+  .card[for="c4"] {
+    background-image: url("/group.webp");
+  }
+</style>

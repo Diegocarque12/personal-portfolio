@@ -1,0 +1,35 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+  // {
+  //   date: "Actualmente...",
+  //   title: "Co-Fundador y Desarrollador - 202Labs",
+  //   description:
+  //     "Llevar la conceptualización, desarrollo y lanzamiento de 3 aplicaciones web, de las cuales, una es Dask. Desarrollo, construcción, implementación de sitios web y mejora del posicionamiento en motores de búsqueda de 2 emprendimientos nacionales.",
+  //   link: "labs202.com",
+  // },
+  {
+    date: "Mayo 2023 - Actualmente",
+    title: "Freelancer",
+    description:
+      "Consultor de programación en 3 empresas internacionales, en las que colaboré como programador, hice mejoras de rendimiento, y trabajé en el area de testing, creando y reestructurando tests. Planeé y construí una aplicación LMS (Sistema de gestión de aprendizaje).",
+    technologies: ["React", "NextJs", ".Net Core", "Jest", "Strapi"],
+  },
+  {
+    date: "Mayo 2021 - Febrero 2023",
+    title: "Full Stack Developer − 5e Creative Labs",
+    description:
+      "Principales labores: Responsable del noticiero La Republica, al cual le hcie mejoras de un 16% el rendimiento en su página. Desarrollo y mantenimiento de un sistema de facturación online con la API del Ministerio de Hacienda, Costa Rica.",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
