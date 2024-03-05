@@ -1,3 +1,12 @@
+Para trabajar de forma local, necesito comentar las siguientes líneas de astro.config.mjs
+
+// import vercel from "@astrojs/vercel/serverless";
+
+// output: "server",
+// adapter: vercel({
+// webAnalytics: { enabled: true },
+// }),
+
 # Astro Starter Kit: Basics
 
 ```sh
