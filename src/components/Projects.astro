@@ -92,9 +92,11 @@ const PROJECTS = [
             for={id}
             class="card xl:w-[80px] min-h-96 xl:min-h-[450px] bg-cover cursor-pointer overflow-hidden flex items-end rounded-lg w-[80vw] m-auto h-full"
           >
-            <div class="flex flex-row items-end cursor-default">
-              <div class="hidden xl:icon">{index}</div>
-              <div class="description bg-black/90 p-4 pl-8 pr-12 h-auto rounded-t-lg xl:rounded-tl-lg relative">
+            <div class="flex flex-row items-end cursor-default row">
+              <div class="hidden xl:flex bg-[#223] text-white rounded-[50%] w-[50px] h-14 items-center justify-center m-4 px-6">
+                {index}
+              </div>
+              <div class="flex flex-col justify-center overflow-hidden h-auto w-[520px] opacity-0 bg-black/90 p-4 pl-8 pr-12 rounded-t-lg xl:rounded-tl-lg relative description">
                 {link ? (
                   <a
                     class="absolute top-0 right-0 bg-[#f5a64b]/90 text-white pt-1 pb-2 pl-2 pr-1 rounded-bl-md transition hover:text-[#f5a64b] hover:bg-white hover:ease-in-out cursor-pointer"
@@ -146,26 +148,7 @@ const PROJECTS = [
     flex-wrap: nowrap;
   }
 
-  .card > .row > .icon {
-    background: #223;
-    color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
-  }
-
-  .card > .row > .description {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    overflow: hidden;
-    height: auto;
-    width: 520px;
-    opacity: 0;
+  .card > .description {
     transform: translateY(30px);
     transition-delay: 0.3s;
     transition: all 0.3s ease;
