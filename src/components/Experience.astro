@@ -2,31 +2,38 @@
 import ExperienceItem from "./ExperienceItem.astro";
 const EXPERIENCIE = [
   {
-    date: "Septiembre 2023 - Actualmente",
-    title: "Co-Fundador y Desarrollador - 202Labs",
+    date: "Mayo 2024 - Actualmente",
+    title: "Software Developer - TransUnion",
     description:
-      "Dirijo un grupo de desarrolladores encargados de mejorar el posicionamiento de marcas en internet con la construcción de sitios web estáticos y aplicaciones web a la medida. Conceptualización, planificación, desarrollo y lanzamiento de Dask un SaaS construído con Next.js 14, PostgreSQL y Nest.js. Además del diseño y desarrollo, construcción, implementación de sitios web y mejora del posicionamiento en motores de búsqueda (SEO) de 2 emprendimientos nacionales.",
-    link: "https://www.labs202.com/",
-    technologies: ["Astro", "Next.js", "PostgreSQL", "Nest"],
+      "Desarrollador Frontend Semi Senior en el equipo de OneTru Core UI, investigado, documentando, desarrollando e immplementado mejoras innovadoras para el producto principal de TransUnion, utilizando tecnologías como React, StoryBook, Vue 3, TypeScript, Sass, y más. Uno de los proyectos mas interesantes y que puedo comentar, fue la creacion de un CLI que inicializaba proyectos frontend con los paquetes necesarios y con Module Federation configurado.",
+    technologies: [
+      "Vue 3",
+      "Sass",
+      "TypeScript",
+      "React",
+      "StoryBook",
+      "Node JS",
+      "Pinia",
+    ],
   },
   {
     date: "Mayo 2023 - Actualmente",
-    title: "Freelancer",
+    title: "Freelancer - Qora ( Fundador y Desarrollador )",
     description:
-      "Diseñador y desarrollador de un SaaS de emisión de certificados VPN, desarrollé el proyecto en Angular 16 y Flowbite como UI Library. Diseñador, y desarrollador de un Ecommerce para la marca de ropa Urbana SaitMode. Consultor de programación en 3 empresas internacionales, en las que colaboré como desarrollador, haciendo mejoras de rendimiento, optimizando código de C# en un software de central telefónica para servicios de emergencia, creé y reestructuré tests. Planeé, diseñé y llevé acabo la construcción de un LMS (Learning Management System) llamada Learny.",
+      "Diseñador y desarrollador de un SaaS de emisión de certificados VPN, desarrollé el proyecto en Angular 16 y Flowbite como UI Library. Diseñador y desarrollador de múltiples aplicaciones (Sass) internas como Dask y PrimeFit, utilizando tecnologías como React, React Native, Next.js, Jest, Strapi, Redux, Astro, y más. Actualmente (2025) sigo trabajando en proyectos con mi sello personal Qora.",
+    link: "https://www.qora.dev/",
     technologies: [
-      "HTML5",
-      "CSS3",
       "React",
       "React Native",
       "Next.js",
-      "ASP.Net",
       "Jest",
       "Strapi",
-      "Angular 16",
-      "StoryBook",
-      "Zustant",
       "Redux",
+      "Astro",
+      "Flowbite",
+      "Angular",
+      "Sass",
+      "TypeScript",
     ],
   },
   {
@@ -49,10 +56,10 @@ const EXPERIENCIE = [
 ];
 ---
 
-<ol class="relative border-s border-gray-200 ml-3">
+<ol class='relative border-s border-gray-200 ml-3'>
   {
     EXPERIENCIE.map((experiencie) => (
-      <li class="mb-10 ms-4">
+      <li class='mb-10 ms-4'>
         <ExperienceItem {...experiencie} />
       </li>
     ))
