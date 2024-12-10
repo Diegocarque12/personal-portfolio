@@ -17,111 +17,111 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout
-  title="Portfolio de Luis Diego Carvajal - Desarrollador y Programador Web con +3 años de experiencia"
-  description="En este Portfolio muestro mis proyectos, experiencia y hablo un poco sobre mi. Además, dejo acceso a mi contacto, y un boton para descargar mi curriculum vitae."
+  title='Portfolio de Luis Diego Carvajal - Desarrollador y Programador Web con +3 años de experiencia'
+  description='En este Portfolio muestro mis proyectos, experiencia y hablo un poco sobre mi. Además, dejo acceso a mi contacto, y un boton para descargar mi curriculum vitae.'
 >
-  <main class="px-8 md:px-6 z-10">
-    <SectionContainer class="py-8 lg:py-28 pb-4 flex justify-center">
+  <main class='px-8 md:px-6 z-10'>
+    <SectionContainer class='py-8 lg:py-28 pb-4 flex justify-center'>
       <div
-        id="personalInfoCard"
-        class="p-4 pt-8 xl:p-16 rounded-2xl shadow-lg z-50 bg-white"
+        id='personalInfoCard'
+        class='p-4 pt-8 xl:p-16 rounded-2xl shadow-lg z-50 bg-white'
       >
-        <div class="flex xl:block gap-4 justify-between">
+        <div class='flex xl:block gap-4 justify-between'>
           <img
-            class="rounded-full size-16 md:size-12 mb-4"
-            src="/diego.webp"
-            alt="diego photo"
+            class='rounded-full size-16 md:size-12 mb-4'
+            src='/diego.webp'
+            alt='diego photo'
           />
-          <div class="flex flex-col md:flex-row md:items-center mb-6">
+          <div class='flex flex-col md:flex-row md:items-center mb-6'>
             <h1
-              class="text-gray-900 text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-2 md:pb-0"
+              class='text-gray-900 text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-2 md:pb-0'
             >
               Diego Carvajal<a
-                href="https://linkedin.com/in/luis-diego-carvajal"
-                target="_blank"
-                rel="noopener"
-                class="flex justify-center items-center"
+                href='https://linkedin.com/in/luis-diego-carvajal'
+                target='_blank'
+                rel='noopener'
+                class='flex justify-center items-center'
               >
               </a>
             </h1>
-            <Badge>Disponible para trabajar</Badge>
+            <Badge>Disponible para Trabajo Adicional</Badge>
           </div>
         </div>
-        <h2 class="text-lg lg:text-xl text-balance max-w-[700px] text-black">
+        <h2 class='text-lg lg:text-xl text-balance max-w-[700px] text-black'>
           <span> Desarrollador y Programador Web</span>.
-          <span class="text-[#f5a64b]">+3 años de experiencia</span><span>
+          <span class='text-[#f5a64b]'>+4 años de experiencia</span><span>
             De Costa Rica</span
           >.
           <span>Creativo y ordenado, con muchas ganas de aprender.</span>
         </h2>
 
-        <nav class="flex gap-4 mt-8 flex-wrap">
+        <nav class='flex gap-4 mt-8 flex-wrap'>
           <SocialPill
-            href="https://drive.google.com/file/d/1Fgz9tOM1zNMWgk7SWq61fDFeq6R4zFwn/view?usp=sharing"
-            download="Diego-Carvajal-CV-2024.pdf"
+            href='https://drive.google.com/file/d/1Fgz9tOM1zNMWgk7SWq61fDFeq6R4zFwn/view?usp=sharing'
+            download='Diego-Carvajal-CV-2024.pdf'
           >
-            <CVIcon class="size-5 md:size-5" />
+            <CVIcon class='size-5 md:size-5' />
             CV
           </SocialPill>
-          <SocialPill href="https://linkedin.com/in/luis-diego-carvajal">
-            <LinkedInIcon class="size-5 md:size-5" />
+          <SocialPill href='https://linkedin.com/in/luis-diego-carvajal'>
+            <LinkedInIcon class='size-5 md:size-5' />
             LinkedIn
           </SocialPill>
-          <SocialPill href="https://github.com/Diegocarque12">
-            <GitHubIcon class="size-5 md:size-5" />
+          <SocialPill href='https://github.com/Diegocarque12'>
+            <GitHubIcon class='size-5 md:size-5' />
             GitHub
           </SocialPill>
-          <SocialPill href="mailto:diegocarque1213@gmail.com">
-            <MailIcon class="size-5 md:size-5" />
+          <SocialPill href='mailto:diegocarque1213@gmail.com'>
+            <MailIcon class='size-5 md:size-5' />
             diegocarque1213@gmail.com
           </SocialPill>
         </nav>
       </div>
     </SectionContainer>
 
-    <SectionContainer id="experiencia" class="pb-4 pt-20 relative">
+    <SectionContainer id='proyectos' class='pb-4 pt-20'>
       <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80"
+        class='text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80'
       >
-        <Briefcase class="size-7" />
-        Experiencia laboral
-      </h2>
-      <Experience />
-    </SectionContainer>
-
-    <SectionContainer id="proyectos" class="pb-4 pt-20">
-      <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80"
-      >
-        <ProjectsIcon class="size-7" />
+        <ProjectsIcon class='size-7' />
         Proyectos
       </h2>
       <Projects />
     </SectionContainer>
 
-    <SectionContainer id="sobre-mi" class="pb-4 pt-20">
+    <SectionContainer id='experiencia' class='pb-4 pt-20 relative'>
       <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80"
+        class='text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80'
       >
-        <CodeIcon class="size-7" />
+        <Briefcase class='size-7' />
+        Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id='sobre-mi' class='pb-4 pt-20'>
+      <h2
+        class='text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80'
+      >
+        <CodeIcon class='size-7' />
         Sobre mi
       </h2>
 
-      <div class="flex flex-col md:flex-row md:gap-4 gap-8">
-        <article class="w-full md:w-2/4 flex flex-col justify-center">
-          <p class="mb-4 md:mb-2">
+      <div class='flex flex-col md:flex-row md:gap-4 gap-8'>
+        <article class='w-full md:w-2/4 flex flex-col justify-center'>
+          <p class='mb-4 md:mb-2'>
             Además del software, he disfrutado de diferentes <b>hobbies</b> como
             el baile latino enfocado en <b>salsa y bachata</b>. Lo que me ha
             permitido participar en algunos campeonatos como por ejemplo en el
             año 2023 con el equipo Rincón Salsero ganamos dos primeros lugares
             en el mundial de baile Euroson Latino.
           </p>
-          <p class="mb-4 md:mb-2">
+          <p class='mb-4 md:mb-2'>
             Antes de eso fuí <b>voluntario de Cruz Roja Juventud</b> por 7 años,
             participando de campamentos nacionales, y aprendí mucho de primeros auxilios,
             acción social, defensa de los derechos humanos y sobre el medio ambiente.
           </p>
-          <p class="mb-4 md:mb-2">
+          <p class='mb-4 md:mb-2'>
             Priorizo mantenerme activo física y mentalmente, permitiendome
             desarrollar habilidades específicas, conocer muchas personas en
             diferentes campos y salir de mi zona de confort, ya que <b
@@ -129,37 +129,37 @@ import Footer from "../components/Footer.astro";
             > constantemente.
           </p>
         </article>
-        <img class="w-full md:w-2/4" src="/profile.jpg" alt="carousel" />
+        <img class='w-full md:w-2/4' src='/profile.jpg' alt='carousel' />
       </div>
     </SectionContainer>
     <ToTop />
 
     <div
-      id="toast-default"
-      class="flex items-center max-w-xs p-2 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 absolute z-50 top-[3.5rem] xl:top-2 right-2 opacity-100 transition-opacity ease-in-out w-max"
-      role="alert"
+      id='toast-default'
+      class='flex items-center max-w-xs p-2 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 absolute z-50 top-[3.5rem] xl:top-2 right-2 opacity-100 transition-opacity ease-in-out w-max'
+      role='alert'
     >
       <div
-        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200"
+        class='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200'
       >
         <svg
-          class="w-4 h-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 18 20"
+          class='w-4 h-4'
+          aria-hidden='true'
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 18 20'
         >
           <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15.147 15.085a7.159 7.159 0 0 1-6.189 3.307A6.713 6.713 0 0 1 3.1 15.444c-2.679-4.513.287-8.737.888-9.548A4.373 4.373 0 0 0 5 1.608c1.287.953 6.445 3.218 5.537 10.5 1.5-1.122 2.706-3.01 2.853-6.14 1.433 1.049 3.993 5.395 1.757 9.117Z"
+            stroke='currentColor'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M15.147 15.085a7.159 7.159 0 0 1-6.189 3.307A6.713 6.713 0 0 1 3.1 15.444c-2.679-4.513.287-8.737.888-9.548A4.373 4.373 0 0 0 5 1.608c1.287.953 6.445 3.218 5.537 10.5 1.5-1.122 2.706-3.01 2.853-6.14 1.433 1.049 3.993 5.395 1.757 9.117Z'
           ></path>
         </svg>
-        <span class="sr-only">Fire icon</span>
+        <span class='sr-only'>Fire icon</span>
       </div>
-      <div class="ms-3 text-xs font-normal pr-2">
+      <div class='ms-3 text-xs font-normal pr-2'>
         Fully in English and Dark Mode Soon
       </div>
       <!-- <button
