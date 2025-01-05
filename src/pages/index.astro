@@ -41,15 +41,16 @@ import Footer from "../components/Footer.astro";
                 target="_blank"
                 rel="noopener"
                 class="flex justify-center items-center"
+                aria-label="LinkedIn Profile"
               >
               </a>
             </h1>
             <Badge>Disponible para Freelance</Badge>
           </div>
         </div>
-        <h2 class="text-lg lg:text-xl text-balance max-w-[700px] text-black">
+        <h2 class="text-lg lg:text-xl text-balance max-w-[700px] text-gray-900">
           <span> Desarrollador y Programador Web</span>.
-          <span class="text-[#f5a64b]">+4 años de experiencia</span><span>
+          <span class="text-blue-800">+4 años de experiencia</span><span>
             De Costa Rica</span
           >.
           <span>Creativo y ordenado, con muchas ganas de aprender.</span>
@@ -81,7 +82,7 @@ import Footer from "../components/Footer.astro";
 
     <SectionContainer id="proyectos" class="pb-4 pt-20">
       <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <ProjectsIcon class="size-7" />
         Proyectos
@@ -91,7 +92,7 @@ import Footer from "../components/Footer.astro";
 
     <SectionContainer id="experiencia" class="pb-4 pt-20 relative">
       <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <Briefcase class="size-7" />
         Experiencia laboral
@@ -101,7 +102,7 @@ import Footer from "../components/Footer.astro";
 
     <SectionContainer id="sobre-mi" class="pb-4 pt-20">
       <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <CodeIcon class="size-7" />
         Sobre mi
@@ -109,19 +110,19 @@ import Footer from "../components/Footer.astro";
 
       <div class="flex flex-col md:flex-row md:gap-4 gap-8">
         <article class="w-full md:w-2/4 flex flex-col justify-center">
-          <p class="mb-4 md:mb-2">
+          <p class="mb-4 md:mb-2 text-gray-900">
             Además del software, he disfrutado de diferentes <b>hobbies</b> como
             el baile latino enfocado en <b>salsa y bachata</b>. Lo que me ha
             permitido participar en algunos campeonatos como por ejemplo en el
             año 2023 con el equipo Rincón Salsero ganamos dos primeros lugares
             en el mundial de baile Euroson Latino.
           </p>
-          <p class="mb-4 md:mb-2">
+          <p class="mb-4 md:mb-2 text-gray-900">
             Antes de eso fuí <b>voluntario de Cruz Roja Juventud</b> por 7 años,
             participando de campamentos nacionales, y aprendí mucho de primeros auxilios,
             acción social, defensa de los derechos humanos y sobre el medio ambiente.
           </p>
-          <p class="mb-4 md:mb-2">
+          <p class="mb-4 md:mb-2 text-gray-900">
             Priorizo mantenerme activo física y mentalmente, permitiendome
             desarrollar habilidades específicas, conocer muchas personas en
             diferentes campos y salir de mi zona de confort, ya que <b
@@ -136,11 +137,11 @@ import Footer from "../components/Footer.astro";
 
     <div
       id="toast-default"
-      class="flex items-center max-w-xs p-2 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 absolute z-50 top-[3.5rem] xl:top-2 right-2 opacity-100 transition-opacity ease-in-out w-max"
+      class="flex items-center max-w-xs p-2 text-gray-700 bg-white rounded-lg shadow dark:text-gray-300 dark:bg-gray-800 absolute z-50 top-[3.5rem] xl:top-2 right-2 opacity-100 transition-opacity ease-in-out w-max"
       role="alert"
     >
       <div
-        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200"
+        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-900 dark:text-blue-200"
       >
         <svg
           class="w-4 h-4"
@@ -162,28 +163,6 @@ import Footer from "../components/Footer.astro";
       <div class="ms-3 text-xs font-normal pr-2">
         Fully in English and Dark Mode Soon
       </div>
-      <!-- <button
-        type="button"
-        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-        data-dismiss-target="#toast-default"
-        aria-label="Close"
-      >
-        <span class="sr-only">Close</span>
-        <svg
-          class="w-3 h-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
-        </svg>
-      </button> -->
     </div>
   </main>
   <Footer />
@@ -194,7 +173,6 @@ import Footer from "../components/Footer.astro";
     setTimeout(() => {
       const toast = document.getElementById("toast-default");
       toast.classList.replace("opacity-100", "opacity-0");
-      // toast.classList.add("opacity-0");
     }, 7000);
   };
 

@@ -41,7 +41,7 @@ const TAGS = {
   },
   SUPABASE: {
     name: "Supabase",
-    class: "bg-[#3ECF8E] text-white",
+    class: "bg-[#3ECF8E] text-black",
     icon: SupabaseIcon,
   },
 };
@@ -72,6 +72,7 @@ const PROJECTS = [
     tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.POSTGRESQL],
   },
 ]; // TODO: https://www.youtube.com/watch?v=iBcjzaOvE94
+// TODO: https://www.youtube.com/watch?v=hfGz5AgHT-E esto para mostrar los proyectos
 // Tener acceso a cada proyecto, ver mas informacion, ver imagenes, ver videos, ver documentacion, ver codigo, ver link, ver github.
 ---
 
@@ -94,6 +95,7 @@ const PROJECTS = [
                     class="absolute top-0 right-0 bg-[#f5a64b]/90 text-white pt-1 pb-2 pl-2 pr-1 rounded-bl-md transition hover:text-[#f5a64b] hover:bg-white hover:ease-in-out cursor-pointer"
                     href={link}
                     target="_blank"
+                    aria-label={`Visit ${title} project`}
                   >
                     <ExternalLinkIcon />
                   </a>
