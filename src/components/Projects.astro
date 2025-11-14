@@ -2,11 +2,20 @@
 import NextJSIcon from "./icons/NextJS.astro";
 import TailwindIcon from "./icons/Tailwind.astro";
 import PostgresqlIcon from "./icons/Postgresql.astro";
-import NestIcon from "./icons/Nest.astro";
-import DenoIcon from "./icons/Deno.astro";
 import ReactIcon from "./icons/React.astro";
 import SupabaseIcon from "./icons/Supabase.astro";
 import ExternalLinkIcon from "./icons/ExternalLink.astro";
+import { getAllProjects } from "../data/projectsData";
+import type { Locale } from "../i18n/translations";
+import { getTranslations } from "../i18n/translations";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const t = getTranslations(locale);
+const projects = getAllProjects(locale);
 
 const TAGS = {
   NEXT: {
@@ -19,20 +28,10 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: TailwindIcon,
   },
-  NEST: {
-    name: "Nest",
-    class: "bg-[#000] text-white",
-    icon: NestIcon,
-  },
   POSTGRESQL: {
     name: "PostgreSQL",
     class: "bg-[#336791ff] text-white",
     icon: PostgresqlIcon,
-  },
-  DENO: {
-    name: "Deno",
-    class: "bg-[#000] text-white",
-    icon: DenoIcon,
   },
   REACT: {
     name: "React",
@@ -46,37 +45,30 @@ const TAGS = {
   },
 };
 
-const PROJECTS = [
-  {
-    id: "c1",
-    index: "1",
-    slug: "primefit",
-    title: "PrimeFit - Training Management System",
-    description:
-      "Plataforma SaaS full-stack para gestión de gimnasios con arquitectura multi-tenant. Incluye control de acceso basado en roles, seguimiento de entrenamientos en tiempo real y gestión de estado optimizada que reduce re-renders en 80-90%. Actualmente sirviendo clientes activos en producción.",
-    link: "https://primefit.coach",
-    tags: [TAGS.REACT, TAGS.SUPABASE, TAGS.TAILWIND, TAGS.POSTGRESQL],
-    featured: true,
-  },
-  {
-    id: "c2",
-    index: "2",
-    slug: "dask",
-    title: "Dask - Dancer Academy Administrator",
-    description:
-      "Aplicación web para gestionar datos de estudiantes, pagos mensuales, crear notificaciones futuras, agendar clases privadas y más. Sistema completo de administración para academias de baile.",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.POSTGRESQL],
-  },
-  {
-    id: "c3",
-    index: "3",
-    slug: "lumma",
-    title: "Lumma - Slot Machine Management System",
-    description:
-      "Sistema integral para gestionar múltiples locales de máquinas tragamonedas y sus gastos. Permite seguimiento de ingresos, costos de mantenimiento y gestión financiera general en diferentes ubicaciones.",
-    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.POSTGRESQL],
-  },
-];
+// Map technologies to tags
+const getTags = (technologies: string[]) => {
+  const tagMap: Record<string, typeof TAGS[keyof typeof TAGS]> = {
+    "Next.js": TAGS.NEXT,
+    "Next.js 13": TAGS.NEXT,
+    "Tailwind CSS": TAGS.TAILWIND,
+    "PostgreSQL": TAGS.POSTGRESQL,
+    "React": TAGS.REACT,
+    "React 18": TAGS.REACT,
+    "Supabase": TAGS.SUPABASE,
+  };
+  
+  return technologies
+    .filter(tech => tagMap[tech])
+    .map(tech => tagMap[tech]);
+};
+
+// Determine project path based on locale
+const getProjectPath = (slug: string, locale: Locale) => {
+  if (locale === "es") {
+    return `/es/proyectos/${slug}`;
+  }
+  return `/projects/${slug}`;
+};
 ---
 
 <div class="w-full md:flex items-center justify-center mt-20">
@@ -84,77 +76,84 @@ const PROJECTS = [
     class="h-full xl:h-[30rem] flex flex-col xl:flex-row flex-nowrap justify-center gap-8"
   >
     {
-      PROJECTS.map(({ id, index, slug, title, description, tags, link, featured }) => (
-        <article>
-          <input type="radio" name="slide" id={id} checked={id === "c1"} />
-          <label
-            for={id}
-            class="card xl:w-[80px] bg-center xl:min-h-[450px] bg-cover cursor-pointer overflow-hidden flex items-end rounded-lg w-[80vw] m-auto h-16 xl:h-full transition-opacity ease-in-out delay-100"
-          >
-            <div class="flex flex-row items-end cursor-default row">
-              <div class="flex flex-col justify-center overflow-hidden h-auto w-[80vw] opacity-0 bg-black/90 p-4 pl-8 pr-12 rounded-t-lg xl:rounded-tl-lg relative description transition-opacity ease-in-out">
-                {link && (
-                  <a
-                    class="absolute top-0 right-0 bg-[#f5a64b]/90 text-white pt-1 pb-2 pl-2 pr-1 rounded-bl-md transition hover:text-[#f5a64b] hover:bg-white hover:ease-in-out cursor-pointer"
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visitar ${title}`}
-                  >
-                    <ExternalLinkIcon />
-                  </a>
-                )}
-
-                <h3 class="text-2xl font-semibold text-[#f5a64b] mb-2">
-                  {title}
-                  {featured && (
-                    <span class="ml-2 text-xs bg-[#f5a64b]/20 text-[#f5a64b] px-2 py-1 rounded-full">
-                      Destacado
-                    </span>
+      projects.map((project, index) => {
+        const cardId = `c${index + 1}`;
+        const tags = getTags(project.technologies);
+        const projectPath = getProjectPath(project.slug, locale);
+        
+        return (
+          <article>
+            <input type="radio" name="slide" id={cardId} checked={index === 0} />
+            <label
+              for={cardId}
+              class="card xl:w-[80px] bg-center xl:min-h-[450px] bg-cover cursor-pointer overflow-hidden flex items-end rounded-lg w-[80vw] m-auto h-16 xl:h-full transition-opacity ease-in-out delay-100"
+              style={`background-image: url('${project.heroImage}')`}
+            >
+              <div class="flex flex-row items-end cursor-default row">
+                <div class="flex flex-col justify-center overflow-hidden h-auto w-[80vw] opacity-0 bg-black/90 p-4 pl-8 pr-12 rounded-t-lg xl:rounded-tl-lg relative description transition-opacity ease-in-out">
+                  {project.liveUrl && (
+                    <a
+                      class="absolute top-0 right-0 bg-[#f5a64b]/90 text-white pt-1 pb-2 pl-2 pr-1 rounded-bl-md transition hover:text-[#f5a64b] hover:bg-white hover:ease-in-out cursor-pointer"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${t.projects.viewLive} ${project.title}`}
+                    >
+                      <ExternalLinkIcon />
+                    </a>
                   )}
-                </h3>
-                
-                <p class="text-lg mb-4 text-pretty text-gray-200 w-full max-w-[35rem]">
-                  {description}
-                </p>
-                
-                <ul class="flex gap-4 md:gap-2 flex-row mb-4 flex-wrap">
-                  {tags.map((tag) => (
-                    <li>
-                      <span
-                        class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
-                      >
-                        <tag.icon class="size-4" />
-                        {tag.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
 
-                <a
-                  href={`/proyectos/${slug}`}
-                  class="mt-2 inline-flex items-center gap-2 text-sm text-[#f5a64b] hover:text-white transition-colors group"
-                >
-                  Ver caso de estudio
-                  <svg 
-                    class="w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <h3 class="text-2xl font-semibold text-[#f5a64b] mb-2">
+                    {project.title}
+                    {project.featured && (
+                      <span class="ml-2 text-xs bg-[#f5a64b]/20 text-[#f5a64b] px-2 py-1 rounded-full">
+                        {t.projects.featured}
+                      </span>
+                    )}
+                  </h3>
+                  
+                  <p class="text-lg mb-4 text-pretty text-gray-200 w-full max-w-[35rem]">
+                    {project.description}
+                  </p>
+                  
+                  <ul class="flex gap-4 md:gap-2 flex-row mb-4 flex-wrap">
+                    {tags.map((tag) => (
+                      <li>
+                        <span
+                          class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
+                        >
+                          <tag.icon class="size-4" />
+                          {tag.name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={projectPath}
+                    class="mt-2 inline-flex items-center gap-2 text-sm text-[#f5a64b] hover:text-white transition-colors group"
                   >
-                    <path 
-                      stroke-linecap="round" 
-                      stroke-linejoin="round" 
-                      stroke-width="2" 
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </a>
+                    {t.projects.viewCaseStudy}
+                    <svg 
+                      class="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </div>
-            </div>
-          </label>
-        </article>
-      ))
+            </label>
+          </article>
+        );
+      })
     }
   </div>
 </div>
@@ -201,15 +200,5 @@ const PROJECTS = [
   input:checked + label .description {
     opacity: 1 !important;
     transform: translateY(0) !important;
-  }
-
-  .card[for="c1"] {
-    background-image: url("/projects/primefit.webp");
-  }
-  .card[for="c2"] {
-    background-image: url("/projects/mobile-dask-dashboard.png");
-  }
-  .card[for="c3"] {
-    background-image: url("/projects/lumma.webp");
   }
 </style>

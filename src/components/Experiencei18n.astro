@@ -1,0 +1,22 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import { getAllExperience } from "../data/experienceData";
+import type { Locale } from "../i18n/translations";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const experiences = getAllExperience(locale);
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+  {
+    experiences.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} locale={locale} />
+      </li>
+    ))
+  }
+</ol>
