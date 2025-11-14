@@ -6,7 +6,7 @@
 
 ## 👨‍💻 About Me
 
-Creative Full Stack Developer with +4 years of experience, based in Costa Rica. Passionate about building scalable solutions and continuous learning.
+Creative Full Stack Developer with +5 years of experience, based in Costa Rica. Passionate about building scalable solutions and continuous learning.
 
 ## 🚀 Local Development
 

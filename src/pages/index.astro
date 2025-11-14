@@ -17,8 +17,8 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout
-  title="Portfolio de Luis Diego Carvajal - Desarrollador y Programador Web con +3 años de experiencia"
-  description="En este Portfolio muestro mis proyectos, experiencia y hablo un poco sobre mi. Además, dejo acceso a mi contacto, y un boton para descargar mi curriculum vitae."
+  title="Diego Carvajal - Senior Frontend Engineer especializado en UI/UX | +5 años de experiencia"
+  description="Senior Frontend Engineer con más de 5 años de experiencia. Especializado en React, Vue, TypeScript y diseño UI/UX. Arquitectura microfrontend y accesibilidad WCAG 2.2."
 >
   <main class="px-8 md:px-6 z-10">
     <SectionContainer class="py-8 lg:py-28 pb-4 flex justify-center">
@@ -30,31 +30,34 @@ import Footer from "../components/Footer.astro";
           <img
             class="rounded-full size-16 md:size-12 mb-4"
             src="/diego.webp"
-            alt="diego photo"
+            alt="Diego Carvajal - Senior Frontend Engineer"
           />
-          <div class="flex flex-col md:flex-row md:items-center mb-6">
+          <div class="flex flex-col md:flex-row md:items-center md:gap-4 mb-6">
             <h1
               class="text-gray-900 text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-2 md:pb-0"
             >
-              Diego Carvajal<a
-                href="https://linkedin.com/in/luis-diego-carvajal"
-                target="_blank"
-                rel="noopener"
-                class="flex justify-center items-center"
-                aria-label="LinkedIn Profile"
-              >
-              </a>
+              Diego Carvajal
             </h1>
-            <Badge>Disponible para Freelance</Badge>
+            <Badge>Disponible para Trabajar</Badge>
           </div>
         </div>
-        <h2 class="text-lg lg:text-xl text-balance max-w-[700px] text-gray-900">
-          <span> Desarrollador y Programador Web</span>.
-          <span class="text-blue-800">+4 años de experiencia</span><span>
-            De Costa Rica</span
-          >.
-          <span>Creativo y ordenado, con muchas ganas de aprender.</span>
-        </h2>
+        
+        <div class="mb-2">
+          <h2 class="text-xl lg:text-2xl font-semibold text-blue-800 mb-2">
+            Senior Frontend Engineer
+          </h2>
+          <p class="text-base lg:text-lg text-gray-600 mb-1">
+            Especializado en UI/UX | +5 años de experiencia
+          </p>
+        </div>
+
+        <p class="text-base lg:text-lg text-balance max-w-[700px] text-gray-700 mt-4">
+          Apasionado por crear soluciones innovadoras y creativas. 
+          Me especializo en <span class="font-semibold text-gray-900">Frontend Development y diseño UI/UX</span>, 
+          con experiencia construyendo <span class="font-semibold text-gray-900">arquitecturas microfrontend</span>, 
+          implementando <span class="font-semibold text-gray-900">estándares WCAG 2.2</span> y 
+          desarrollando <span class="font-semibold text-gray-900">sistemas de diseño escalables</span>.
+        </p>
 
         <nav class="flex gap-4 mt-8 flex-wrap">
           <SocialPill
@@ -62,7 +65,7 @@ import Footer from "../components/Footer.astro";
             download="Diego-Carvajal-CV-2024.pdf"
           >
             <CVIcon class="size-5 md:size-5" />
-            CV
+            Descargar CV
           </SocialPill>
           <SocialPill href="https://linkedin.com/in/luis-diego-carvajal">
             <LinkedInIcon class="size-5 md:size-5" />
@@ -80,24 +83,24 @@ import Footer from "../components/Footer.astro";
       </div>
     </SectionContainer>
 
-    <SectionContainer id="proyectos" class="pb-4 pt-20">
-      <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
-      >
-        <ProjectsIcon class="size-7" />
-        Proyectos
-      </h2>
-      <Projects />
-    </SectionContainer>
-
     <SectionContainer id="experiencia" class="pb-4 pt-20 relative">
       <h2
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <Briefcase class="size-7" />
-        Experiencia laboral
+        Experiencia Laboral
       </h2>
       <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos" class="pb-4 pt-20">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
+      >
+        <ProjectsIcon class="size-7" />
+        Proyectos Destacados
+      </h2>
+      <Projects />
     </SectionContainer>
 
     <SectionContainer id="sobre-mi" class="pb-4 pt-20">
@@ -105,34 +108,37 @@ import Footer from "../components/Footer.astro";
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <CodeIcon class="size-7" />
-        Sobre mi
+        Sobre Mí
       </h2>
 
-      <div class="flex flex-col md:flex-row md:gap-4 gap-8">
-        <article class="w-full md:w-2/4 flex flex-col justify-center">
-          <p class="mb-4 md:mb-2 text-gray-900">
-            Además del software, he disfrutado de diferentes <b>hobbies</b> como
-            el baile latino enfocado en <b>salsa y bachata</b>. Lo que me ha
-            permitido participar en algunos campeonatos como por ejemplo en el
-            año 2023 con el equipo Rincón Salsero ganamos dos primeros lugares
-            en el mundial de baile Euroson Latino.
-          </p>
-          <p class="mb-4 md:mb-2 text-gray-900">
-            Antes de eso fuí <b>voluntario de Cruz Roja Juventud</b> por 7 años,
-            participando de campamentos nacionales, y aprendí mucho de primeros auxilios,
-            acción social, defensa de los derechos humanos y sobre el medio ambiente.
-          </p>
-          <p class="mb-4 md:mb-2 text-gray-900">
-            Priorizo mantenerme activo física y mentalmente, permitiendome
-            desarrollar habilidades específicas, conocer muchas personas en
-            diferentes campos y salir de mi zona de confort, ya que <b
-              >encuentro y resuelvo nuevos desafíos</b
-            > constantemente.
-          </p>
-        </article>
-        <img class="w-full md:w-2/4" src="/profile.jpg" alt="carousel" />
-      </div>
+      <article class="max-w-[800px]">
+        <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+          Como desarrollador frontend senior, mi enfoque va más allá de escribir código funcional. 
+          Me apasiona <span class="font-semibold text-gray-900">crear experiencias de usuario excepcionales</span> que 
+          sean intuitivas, accesibles y visualmente atractivas.
+        </p>
+        
+        <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+          Mi experiencia abarca desde la <span class="font-semibold text-gray-900">arquitectura de aplicaciones 
+          escalables</span> hasta la implementación de <span class="font-semibold text-gray-900">diseños pixel-perfect</span>. 
+          He liderado migraciones de arquitecturas monolíticas a microfrontend, establecido estándares de accesibilidad 
+          WCAG 2.2 en productos empresariales, y desarrollado sistemas de diseño utilizados por equipos completos.
+        </p>
+
+        <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+          Actualmente estoy expandiendo mis conocimientos en <span class="font-semibold text-gray-900">UX Design 
+          con Google</span>, porque creo firmemente que los mejores productos nacen cuando combinamos 
+          excelencia técnica con un profundo entendimiento del usuario.
+        </p>
+
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Fuera del código, mantengo un equilibrio activo con el baile latino (salsa y bachata), 
+          lo que me ha enseñado sobre disciplina, trabajo en equipo y la importancia de la práctica constante, 
+          habilidades que aplico directamente en mi desarrollo profesional.
+        </p>
+      </article>
     </SectionContainer>
+    
     <ToTop />
 
     <div
@@ -161,7 +167,7 @@ import Footer from "../components/Footer.astro";
         <span class="sr-only">Fire icon</span>
       </div>
       <div class="ms-3 text-xs font-normal pr-2">
-        Fully in English and Dark Mode Soon
+        English version coming soon
       </div>
     </div>
   </main>
@@ -169,12 +175,14 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <script>
-  const hiddeToast = () => {
+  const hideToast = () => {
     setTimeout(() => {
       const toast = document.getElementById("toast-default");
-      toast.classList.replace("opacity-100", "opacity-0");
+      if (toast) {
+        toast.classList.replace("opacity-100", "opacity-0");
+      }
     }, 7000);
   };
 
-  hiddeToast();
+  hideToast();
 </script>

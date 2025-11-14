@@ -1,81 +1,279 @@
 ---
 import ProjectLayout from "../../layouts/ProjectsLayout.astro";
 import Footer from "../../components/Footer.astro";
+import { getProject, getProjectSlugs } from "../../data/projectsData";
 
-export const getStaticPaths = () => {
-  return [
-    { params: { project: "dask" } },
-    { params: { project: "saint" } },
-    { params: { project: "cut-time" } },
-    { params: { project: "learny" } },
-  ];
-};
+export function getStaticPaths() {
+  const slugs = getProjectSlugs();
+  return slugs.map((slug) => ({
+    params: { project: slug },
+  }));
+}
 
-const { project } = Astro.params;
+const { project: slug } = Astro.params;
+const project = getProject(slug);
+
+if (!project) {
+  return Astro.redirect("/404");
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  role,
+  duration,
+  technologies,
+  liveUrl,
+  githubUrl,
+  heroImage,
+  gallery,
+  overview,
+  challenge,
+  solution,
+  impact,
+  features,
+  technicalHighlights,
+  lessonsLearned,
+  nextSteps,
+} = project;
 ---
 
 <ProjectLayout
-  title="Portfolio de Luis Diego Carvajal - Desarrollador y Programador Web con +3 años de experiencia"
-  description="En este Portfolio muestro mis proyectos, experiencia y hablo un poco sobre mi. Además, dejo acceso a mi contacto, y un boton para descargar mi curriculum vitae."
+  title={`${title} - Caso de Estudio | Diego Carvajal`}
+  description={description}
 >
-  <main
-    class="flex
-    flex-col
-    xl:w-[1200px]
-    m-auto
-    items-center
-    relative z-10 bg-white shadow-2xl rounded-xl px-16 py-8"
-  >
-    <h1 class="text-5xl mt-8 mb-12">
-      <strong class="capitalize">{project}</strong>
-    </h1>
+  <main class="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto py-8 md:py-16">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm">
+      <ol class="flex items-center gap-2 text-gray-600">
+        <li>
+          <a href="/" class="hover:text-blue-600 transition">Inicio</a>
+        </li>
+        <li>/</li>
+        <li>
+          <a href="/#proyectos" class="hover:text-blue-600 transition">Proyectos</a>
+        </li>
+        <li>/</li>
+        <li class="text-gray-900 font-medium">{title}</li>
+      </ol>
+    </nav>
 
-    <div class="grid gap-4">
-      <div>
-        <img
-          class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg"
-          alt=""
-        />
-      </div>
-      <div class="grid grid-cols-5 gap-4">
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3">
+        {title}
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 mb-6">{subtitle}</p>
+      <p class="text-lg text-gray-700 max-w-3xl mb-8">{description}</p>
+
+      <!-- Meta Info -->
+      <div class="flex flex-wrap gap-6 mb-8 text-sm">
         <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-            alt=""
-          />
+          <span class="text-gray-600">Rol:</span>
+          <span class="ml-2 text-gray-900 font-medium">{role}</span>
         </div>
         <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
-            alt=""
-          />
+          <span class="text-gray-600">Duración:</span>
+          <span class="ml-2 text-gray-900 font-medium">{duration}</span>
         </div>
       </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4">
+        {liveUrl && (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            Ver Proyecto Live
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        )}
+        {githubUrl && (
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition font-medium"
+          >
+            Ver en GitHub
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        )}
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="mb-16 rounded-2xl overflow-hidden shadow-2xl">
+      <img
+        src={heroImage}
+        alt={`${title} hero image`}
+        class="w-full h-auto"
+      />
     </div>
+
+    <!-- Technologies -->
+    <section class="mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Stack Tecnológico
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {technologies.map((tech) => (
+          <span class="bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium border border-blue-200">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Visión General
+      </h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        {overview}
+      </p>
+    </section>
+
+    <!-- Challenge & Solution -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <section class="bg-red-50 p-6 md:p-8 rounded-2xl border border-red-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="text-red-600">⚡</span>
+          El Desafío
+        </h2>
+        <p class="text-gray-700 leading-relaxed">
+          {challenge}
+        </p>
+      </section>
+
+      <section class="bg-green-50 p-6 md:p-8 rounded-2xl border border-green-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="text-green-600">✓</span>
+          La Solución
+        </h2>
+        <p class="text-gray-700 leading-relaxed">
+          {solution}
+        </p>
+      </section>
+    </div>
+
+    <!-- Impact Metrics -->
+    <section class="mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+        Impacto y Resultados
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {impact.map((item) => (
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition">
+            <div class="text-4xl font-bold text-blue-600 mb-2">
+              {item.value}
+            </div>
+            <div class="text-lg font-semibold text-gray-900 mb-2">
+              {item.metric}
+            </div>
+            <p class="text-gray-600 text-sm">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+        Características Principales
+      </h2>
+      <div class="space-y-6">
+        {features.map((feature, index) => (
+          <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
+                {index + 1}
+              </span>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">
+                  {feature.title}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Technical Highlights -->
+    <section class="mb-16 bg-gray-50 p-8 rounded-2xl border border-gray-200">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Destacados Técnicos
+      </h2>
+      <ul class="space-y-3">
+        {technicalHighlights.map((highlight) => (
+          <li class="flex items-start gap-3 text-gray-700">
+            <span class="text-blue-600 mt-1 flex-shrink-0">▸</span>
+            <span class="leading-relaxed">{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Lessons Learned -->
+    <section class="mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Aprendizajes Clave
+      </h2>
+      <div class="space-y-4">
+        {lessonsLearned.map((lesson) => (
+          <div class="bg-yellow-50 p-5 rounded-xl border border-yellow-200">
+            <p class="text-gray-800 leading-relaxed">
+              💡 {lesson}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Next Steps (if available) -->
+    {nextSteps && nextSteps.length > 0 && (
+      <section class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Próximos Pasos
+        </h2>
+        <ul class="space-y-3">
+          {nextSteps.map((step) => (
+            <li class="flex items-start gap-3 text-gray-700">
+              <span class="text-green-600 mt-1 flex-shrink-0">→</span>
+              <span class="leading-relaxed">{step}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- CTA Back to Projects -->
+    <section class="text-center py-12 border-t border-gray-200">
+      <a
+        href="/#proyectos"
+        class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-lg group"
+      >
+        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Ver todos los proyectos
+      </a>
+    </section>
   </main>
   <Footer />
 </ProjectLayout>

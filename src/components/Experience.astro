@@ -1,56 +1,75 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+
 const EXPERIENCIE = [
   {
-    date: "Mayo 2024 - Actualmente",
-    title: "Software Developer - TransUnion",
-    description:
-      "Desarrollador Frontend Semi Senior en el equipo de OneTru Core UI, investigado, documentando, desarrollando e immplementado mejoras innovadoras para el producto principal de TransUnion, utilizando tecnologías como React, StoryBook, Vue 3, TypeScript, Sass, y más. Uno de los proyectos mas interesantes y que puedo comentar, fue la creacion de un CLI que inicializaba proyectos frontend con los paquetes necesarios y con Module Federation configurado. He establecido pautas para la implementación de estándares WCAG 2.2 en la empresa, aplicándolos exitosamente en módulos completos para mejorar la accesibilidad.",
+    date: "Mayo 2024 - Presente",
+    title: "Mid Senior Frontend Engineer",
+    company: "TransUnion",
+    description: "",
+    achievements: [
+      "Lideré la migración de UI monolítica a arquitectura microfrontend usando Module Federation, mejorando el rendimiento y reduciendo la fricción en despliegues",
+      "Contribuí en investigación, documentación y desarrollo de mejoras core del producto, enfocándome en escalabilidad y mantenibilidad",
+      "Implementé estándares de accesibilidad WCAG 2.2 en módulos completos, mejorando usabilidad y cumplimiento normativo",
+      "Desarrollé componentes escalables y accesibles con React, Vue 3, TypeScript, Storybook y Sass para el sistema de diseño"
+    ],
     technologies: [
-      "Vue 3",
-      "Sass",
-      "TypeScript",
       "React",
-      "StoryBook",
-      "Node JS",
+      "Vue 3",
+      "TypeScript",
+      "Storybook",
+      "Sass",
+      "Module Federation",
+      "WCAG 2.2",
       "Pinia",
+      "Node.js"
     ],
   },
   {
-    date: "Mayo 2023 - Actualmente",
-    title: "Freelancer - Qora ( Fundador y Desarrollador )",
-    description:
-      "Diseñador y desarrollador de un SaaS de emisión de certificados VPN, desarrollé el proyecto en Angular 16 y Flowbite como UI Library. Diseñador y desarrollador de múltiples aplicaciones (Sass) internas como Dask y PrimeFit, utilizando tecnologías como React, React Native, Next.js, Jest, Strapi, Redux, Astro, y más. Actualmente (2025) sigo trabajando en proyectos con mi sello personal Qora.",
+    date: "Abril 2023 - Presente",
+    title: "Freelancer - Fundador & Desarrollador",
+    company: "Qora",
     link: "https://www.qora.dev/",
+    description: "",
+    achievements: [
+      "Desarrollé PrimeFit: plataforma SaaS full-stack para gestión de gimnasios con React 18, TypeScript, Redux Toolkit y Supabase (PostgreSQL)",
+      "Implementé arquitectura multi-tenant con control de acceso basado en roles y seguimiento de entrenamientos en tiempo real",
+      "Optimicé gestión de estado reduciendo re-renders en 80-90%, mejorando significativamente el rendimiento",
+      "Actualmente sirviendo clientes activos en producción con múltiples gimnasios usando la plataforma"
+    ],
     technologies: [
-      "React",
+      "React 18",
+      "TypeScript",
+      "Redux Toolkit",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind CSS",
       "React Native",
       "Next.js",
-      "Jest",
-      "Strapi",
-      "Redux",
-      "Astro",
-      "Flowbite",
-      "Angular",
-      "Sass",
-      "TypeScript",
+      "Zustand"
     ],
   },
   {
     date: "Mayo 2021 - Febrero 2023",
-    title: "Full Stack Developer − 5e Creative Labs",
-    description:
-      "Responsable del noticiero La Republica colaborando con el desarrollo y mantenimiento del panel en el que se crean las noticias y la página principal, al cual le hice mejoras de un 16% el rendimiento en su página reduciendo el CSS total del proyecto de 18 mil líneas a 12 mil líneas, optimizando su carga y modularizando las clases. Desarrollo y mantenimiento de un sistema de facturación online con la API del Ministerio de Hacienda, Costa Rica.",
+    title: "Full Stack Developer",
+    company: "5e Creative Labs",
+    description: "",
+    achievements: [
+      "Responsable del desarrollo y mantenimiento del CMS y sitio principal de La República, uno de los principales medios de Costa Rica",
+      "Mejoré el rendimiento del sitio en un 16% reduciendo CSS de 18,000 a 12,000 líneas mediante optimización y modularización",
+      "Desarrollé y mantuve sistema de facturación electrónica integrado con API del Ministerio de Hacienda de Costa Rica",
+      "Trabajé con stack completo incluyendo React, Vue.js, Laravel y Statamic CMS"
+    ],
     technologies: [
-      "HTML5",
-      "CSS3",
       "React",
       "Vue.js",
       "PHP",
       "Laravel",
       "Statamic",
-      "Typescript",
+      "TypeScript",
       "Node.js",
+      "HTML5",
+      "CSS3"
     ],
   },
 ];
@@ -58,9 +77,9 @@ const EXPERIENCIE = [
 
 <ol class="relative border-s border-gray-200 ml-3">
   {
-    EXPERIENCIE.map((experiencie) => (
+    EXPERIENCIE.map((experience) => (
       <li class="mb-10 ms-4">
-        <ExperienceItem {...experiencie} />
+        <ExperienceItem {...experience} />
       </li>
     ))
   }
