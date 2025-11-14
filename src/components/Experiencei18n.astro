@@ -15,10 +15,7 @@ const experiences = getAllExperience(locale);
   {
     experiences.map((experience) => (
       <li class="mb-10 ms-4">
-        <ExperienceItem 
-          {...experience} 
-          locale={locale}
-        />
+        <ExperienceItem {...experience} locale={locale} />
       </li>
     ))
   }

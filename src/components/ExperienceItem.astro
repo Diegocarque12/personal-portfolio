@@ -1,48 +1,147 @@
 ---
+import type { Locale } from "../i18n/translations";
+import { getTranslations } from "../i18n/translations";
+
+interface ProjectItem {
+  name: string;
+  description: string;
+  achievements: string[];
+  technologies?: string[];
+}
+
 interface Props {
   title: string;
-  description: string;
+  company: string;
+  description?: string;
+  achievements?: string[];
+  projects?: ProjectItem[];
   link?: string;
   date: string;
   technologies: string[];
+  hasNestedProjects?: boolean;
+  locale?: Locale;
 }
 
-const { title, description, link, date, technologies } = Astro.props;
+const { 
+  title, 
+  company, 
+  description,
+  achievements, 
+  projects,
+  link, 
+  date, 
+  technologies, 
+  hasNestedProjects,
+  locale = "en" 
+} = Astro.props;
+
+const t = getTranslations(locale);
+const featuredProjectsLabel = locale === "en" ? "Featured Projects" : "Proyectos Destacados";
 ---
 
 <div class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border bg-gray-500">
 </div>
 <time class="mb-1 text-sm font-normal leading-none text-sky-800">{date}</time>
 <article class="flex flex-col">
-  <h3 class="text-lg font-semibold text-[#f5a64b] mt-2">
+  <h3 class="text-lg font-semibold text-gray-900 mt-2">
     {title}
   </h3>
-  <p class="mb-2 text-base font-normal text-gray-600 text-pretty">
-    {description}
-  </p>
-  <div class="flex mb-4 flex-wrap gap-2 xl:gap-0">
+  <h4 class="text-base font-medium text-[#f5a64b] mb-3">
+    {company}
+  </h4>
+  
+  <!-- Company Description (for Qora) -->
+  {description && (
+    <p class="text-base text-gray-700 mb-4 text-pretty leading-relaxed">
+      {description}
+    </p>
+  )}
+
+  <!-- Projects Section (for Qora with nested projects) -->
+  {hasNestedProjects && projects && (
+    <div class="mb-4">
+      <h5 class="text-base font-semibold text-gray-900 mb-3 flex items-center gap-2">
+        <span class="text-blue-600">→</span>
+        {featuredProjectsLabel}:
+      </h5>
+      
+      <div class="space-y-6 ml-4 border-l-2 border-gray-200 pl-4">
+        {projects.map((project) => (
+          <div class="relative">
+            <div class="absolute -left-[1.3rem] top-1.5 w-2 h-2 rounded-full bg-blue-600"></div>
+            
+            <h6 class="text-base font-semibold text-gray-900 mb-1">
+              {project.name}
+            </h6>
+            <p class="text-sm text-gray-600 italic mb-2">
+              {project.description}
+            </p>
+            
+            <ul class="space-y-2 list-none mb-3">
+              {project.achievements.map((achievement) => (
+                <li class="text-sm text-gray-700 flex items-start gap-2">
+                  <span class="text-gray-400 mt-1 flex-shrink-0">•</span>
+                  <span class="text-pretty">{achievement}</span>
+                </li>
+              ))}
+            </ul>
+
+            {project.technologies && project.technologies.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                {project.technologies.map((tech) => (
+                  <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full border border-gray-200">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <!-- Regular Achievements (for TransUnion, 5e) -->
+  {!hasNestedProjects && achievements && (
+    <ul class="mb-4 space-y-2 list-none">
+      {achievements.map((achievement) => (
+        <li class="text-base text-gray-700 flex items-start gap-2">
+          <span class="text-[#f5a64b] mt-1.5 flex-shrink-0">▸</span>
+          <span class="text-pretty">{achievement}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+  
+  <!-- Technologies (shown for all, but at bottom for Qora) -->
+  <div class="flex mb-4 flex-wrap gap-2">
     {
       technologies.map((item) => (
-        <span class="bg-gray-200 text-gray-700 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">
+        <span class="bg-blue-50 text-blue-700 text-xs font-medium px-2.5 py-0.5 rounded-full border border-blue-200">
           {item}
         </span>
       ))
     }
   </div>
+  
   {
     link && (
       <a
         href={link}
+        target="_blank"
+        rel="noopener noreferrer"
         class="bg-white/5 
-    border  border-black/40 border-gray-300
+    border border-gray-300
     rounded-full
     inline-flex justify-center items-center gap-x-2
     py-1 px-2 md:py-2 md:px-4
     text-xs md:text-base
+    text-gray-700
     transition
-    hover:scale-110 hover:bg-white/10 w-max"
+    hover:scale-105 hover:bg-gray-50 hover:border-gray-400 w-max"
+        aria-label={`${t.experience.visitWebsite} ${company}`}
       >
-        Saber más...{" "}
+        {t.experience.visitWebsite}
         <svg
           class="w-3 h-3 ms-2 rtl:rotate-180"
           aria-hidden="true"

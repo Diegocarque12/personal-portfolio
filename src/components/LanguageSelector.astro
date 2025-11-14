@@ -1,0 +1,40 @@
+---
+// src/components/LanguageSelector.astro
+import type { Locale } from "../i18n/translations";
+import { translatePath } from "../i18n/utils";
+
+interface Props {
+  currentLocale: Locale;
+  currentPath: string;
+}
+
+const { currentLocale, currentPath } = Astro.props;
+
+// Get the alternate path
+const alternatePath = translatePath(currentPath, currentLocale === "en" ? "es" : "en");
+---
+
+<div class="flex items-center gap-2 bg-white rounded-md rounded-br-none lg:rounded-full px-1 py-1 lg:shadow-sm lg:border border-gray-200">
+  <a
+    href={currentLocale === "en" ? currentPath : alternatePath}
+    class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+      currentLocale === "en"
+        ? "bg-blue-600 text-white shadow-sm"
+        : "text-gray-600 hover:bg-gray-100"
+    }`}
+    aria-label="Switch to English"
+  >
+    EN
+  </a>
+  <a
+    href={currentLocale === "es" ? currentPath : alternatePath}
+    class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+      currentLocale === "es"
+        ? "bg-blue-600 text-white shadow-sm"
+        : "text-gray-600 hover:bg-gray-100"
+    }`}
+    aria-label="Cambiar a Español"
+  >
+    ES
+  </a>
+</div>
