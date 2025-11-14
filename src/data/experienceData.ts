@@ -2,10 +2,19 @@
 
 import type { Locale } from "../i18n/translations";
 
+export interface ProjectItem {
+  name: string;
+  description: string;
+  achievements: string[];
+  technologies?: string[];
+}
+
 export interface ExperienceTranslations {
   title: string;
   company: string;
-  achievements: string[];
+  description?: string;
+  achievements?: string[];
+  projects?: ProjectItem[];
 }
 
 export interface ExperienceData {
@@ -15,6 +24,7 @@ export interface ExperienceData {
   };
   technologies: string[];
   link?: string;
+  hasNestedProjects?: boolean;
   translations: {
     en: ExperienceTranslations;
     es: ExperienceTranslations;
@@ -27,6 +37,7 @@ export const experienceData: ExperienceData[] = [
       en: "May 2024 - Present",
       es: "Mayo 2024 - Presente",
     },
+    link: "https://www.transunion.com/",
     technologies: [
       "React",
       "Vue 3",
@@ -67,6 +78,7 @@ export const experienceData: ExperienceData[] = [
       es: "Abril 2023 - Presente",
     },
     link: "https://www.qora.dev/",
+    hasNestedProjects: true,
     technologies: [
       "React 18",
       "TypeScript",
@@ -82,21 +94,97 @@ export const experienceData: ExperienceData[] = [
       en: {
         title: "Freelancer - Founder & Developer",
         company: "Qora",
-        achievements: [
-          "Developed PrimeFit: full-stack SaaS gym management platform with React 18, TypeScript, Redux Toolkit, and Supabase (PostgreSQL)",
-          "Implemented multi-tenant architecture with role-based access control and real-time workout tracking",
-          "Optimized state management reducing re-renders by 80-90%, significantly improving performance",
-          "Currently serving active production clients with multiple gyms using the platform",
+        description:
+          "As a freelance developer under the Qora brand, I design and build high-quality software solutions, ranging from complete SaaS products to specific client projects. Qora is my seal of guarantee for scalable, maintainable, and user-centered code.",
+        projects: [
+          {
+            name: "PrimeFit",
+            description: "Full-stack SaaS platform for gym management",
+            achievements: [
+              "Developed a complete multi-tenant gym management platform with role-based access control and real-time workout tracking",
+              "Optimized state management reducing re-renders by 80-90%, significantly improving performance",
+              "Implemented robust authentication and authorization with multiple security layers from frontend to database",
+              "Currently serving multiple active production clients with several gyms using the platform",
+            ],
+            technologies: [
+              "React 18",
+              "TypeScript",
+              "Redux Toolkit",
+              "Supabase",
+              "PostgreSQL",
+            ],
+          },
+          {
+            name: "Dask",
+            description: "Dance academy management system",
+            achievements: [
+              "Built complete student management system with payment tracking, attendance control, and automated notifications",
+              "Reduced administrative tasks by 10 hours per week through process automation",
+              "Designed intuitive interface for non-technical users with Next.js 13 Server Components",
+            ],
+            technologies: ["React 18", "Supabase", "Tailwind CSS", "Zustant"],
+          },
+          {
+            name: "Client Development",
+            description: "Custom solutions and landing pages",
+            achievements: [
+              "Created custom landing pages and websites for various clients, focused on performance optimization and UX",
+              "Delivered tailored solutions using modern technologies and best practices",
+            ],
+          },
         ],
       },
       es: {
         title: "Freelancer - Fundador & Desarrollador",
         company: "Qora",
-        achievements: [
-          "Desarrollé PrimeFit: plataforma SaaS full-stack para gestión de gimnasios con React 18, TypeScript, Redux Toolkit y Supabase (PostgreSQL)",
-          "Implementé arquitectura multi-tenant con control de acceso basado en roles y seguimiento de entrenamientos en tiempo real",
-          "Optimicé gestión de estado reduciendo re-renders en 80-90%, mejorando significativamente el rendimiento",
-          "Actualmente sirviendo clientes activos en producción con múltiples gimnasios usando la plataforma",
+        description:
+          "Como desarrollador freelance bajo la marca Qora, diseño y construyo soluciones de software de alta calidad, abarcando desde productos SaaS completos hasta proyectos específicos para clientes. Qora es mi sello de garantía en cuanto a código escalable, mantenible y centrado en el usuario.",
+        projects: [
+          {
+            name: "PrimeFit",
+            description: "Plataforma SaaS full-stack para gestión de gimnasios",
+            achievements: [
+              "Desarrollé plataforma completa multi-tenant para gestión de gimnasios con control de acceso basado en roles y seguimiento de entrenamientos en tiempo real",
+              "Optimicé gestión de estado reduciendo re-renders en 80-90%, mejorando significativamente el rendimiento",
+              "Implementé autenticación y autorización robusta con múltiples capas de seguridad desde frontend hasta base de datos",
+              "Actualmente sirviendo múltiples clientes activos en producción con varios gimnasios usando la plataforma",
+            ],
+            technologies: [
+              "React 18",
+              "TypeScript",
+              "Redux Toolkit",
+              "Supabase",
+              "PostgreSQL",
+            ],
+          },
+          {
+            name: "Dask",
+            description: "Sistema de gestión para academias de baile",
+            achievements: [
+              "Construí sistema completo de gestión de estudiantes con seguimiento de pagos, control de asistencia y notificaciones automatizadas",
+              "Reduje tareas administrativas en 10 horas por semana mediante automatización de procesos",
+              "Diseñé interfaz intuitiva para usuarios no técnicos con Next.js 13 Server Components",
+            ],
+            technologies: ["Next.js 13", "Supabase", "Tailwind CSS"],
+          },
+          {
+            name: "Lumma",
+            description: "Sistema de gestión de máquinas tragamonedas",
+            achievements: [
+              "Desarrollé dashboard centralizado para gestionar 15+ ubicaciones con tracking financiero en tiempo real",
+              "Implementé visualizaciones interactivas para análisis de ingresos y control de mantenimiento",
+              "Mejoré velocidad de toma de decisiones 3x mediante visualización de datos",
+            ],
+            technologies: ["React 18", "Recharts", "Tailwind CSS"],
+          },
+          {
+            name: "Desarrollo para Clientes",
+            description: "Soluciones personalizadas y landing pages",
+            achievements: [
+              "Creé landing pages y sitios web personalizados para diversos clientes, enfocados en optimización de rendimiento y UX",
+              "Entregué soluciones a medida usando tecnologías modernas y mejores prácticas",
+            ],
+          },
         ],
       },
     },
@@ -148,8 +236,11 @@ export const getAllExperience = (locale: Locale = "en") => {
     date: exp.date[locale],
     technologies: exp.technologies,
     link: exp.link,
+    hasNestedProjects: exp.hasNestedProjects,
     title: exp.translations[locale].title,
     company: exp.translations[locale].company,
+    description: exp.translations[locale].description,
     achievements: exp.translations[locale].achievements,
+    projects: exp.translations[locale].projects,
   }));
 };
