@@ -86,11 +86,11 @@ const getProjectPath = (slug: string, locale: Locale) => {
             <input type="radio" name="slide" id={cardId} checked={index === 0} />
             <label
               for={cardId}
-              class="card xl:w-[80px] bg-center xl:min-h-[450px] bg-cover cursor-pointer overflow-hidden flex items-end rounded-lg w-[80vw] m-auto h-16 xl:h-full transition-opacity ease-in-out delay-100"
+              class="card xl:w-[80px] bg-center xl:min-h-[450px] bg-cover cursor-pointer overflow-hidden flex items-end rounded-lg w-[80vw] m-auto min-h-[500px] xl:h-full transition-opacity ease-in-out delay-100"
               style={`background-image: url('${project.heroImage}')`}
             >
               <div class="flex flex-row items-end cursor-default row">
-                <div class="flex flex-col justify-center overflow-hidden h-auto w-[80vw] opacity-0 bg-black/90 p-4 pl-8 pr-12 rounded-t-lg xl:rounded-tl-lg relative description transition-opacity ease-in-out">
+                <div class="flex flex-col justify-center overflow-hidden h-auto w-[80vw] opacity-100 xl:opacity-0 bg-black/90 p-4 pl-8 pr-12 rounded-t-lg xl:rounded-tl-lg relative description transition-opacity ease-in-out">
                   {project.liveUrl && (
                     <a
                       class="absolute top-0 right-0 bg-[#f5a64b]/90 text-white pt-1 pb-2 pl-2 pr-1 rounded-bl-md transition hover:text-[#f5a64b] hover:bg-white hover:ease-in-out cursor-pointer"
@@ -171,7 +171,8 @@ const getProjectPath = (slug: string, locale: Locale) => {
   }
 
   .card > .description {
-    transform: translateY(30px);
+    /* Mobile: always visible, no transform */
+    transform: translateY(0);
     transition-delay: 0.3s;
     transition: all 0.3s ease;
   }
@@ -184,21 +185,34 @@ const getProjectPath = (slug: string, locale: Locale) => {
     display: none;
   }
 
-  input:checked + label {
-    width: 600px;
-  }
+  /* Desktop accordion behavior */
+  @media (width > 1200px) {
+    .card > .description {
+      /* Desktop: hidden by default with transform */
+      opacity: 0 !important;
+      transform: translateY(30px);
+    }
 
-  @media (width <= 1200px) {
     input:checked + label {
-      width: 80vw;
-      min-height: 600px;
-      transition-delay: 0.3s;
-      transition: all 0.3s ease;
+      width: 600px;
+    }
+
+    input:checked + label .description {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
   }
 
-  input:checked + label .description {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  /* Mobile: all projects visible */
+  @media (width <= 1200px) {
+    .card {
+      width: 80vw;
+      min-height: 500px;
+    }
+
+    .card > .description {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
   }
 </style>

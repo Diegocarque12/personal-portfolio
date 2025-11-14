@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
         class="p-4 pt-8 xl:p-16 rounded-2xl shadow-lg z-50 bg-white relative"
       >
         <!-- Language Selector -->
-        <div class="absolute top-4 right-4">
+        <div class="absolute -top-4 -right-4 lg:top-4 lg:right-4">
           <LanguageSelector currentLocale="es" currentPath={currentPath} />
         </div>
 
@@ -67,7 +67,7 @@ const currentPath = Astro.url.pathname;
 
         <nav class="flex gap-4 mt-8 flex-wrap">
           <SocialPill
-            href="https://drive.google.com/file/d/YOUR_CV_LINK_HERE"
+            href="/src/assets/CV_DiegoCarvajal_2025.pdf"
             download="Diego-Carvajal-CV-2025.pdf"
           >
             <CVIcon class="size-5 md:size-5" />

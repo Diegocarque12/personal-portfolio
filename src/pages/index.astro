@@ -29,16 +29,16 @@ const currentPath = Astro.url.pathname;
     <SectionContainer class="py-8 lg:py-28 pb-4 flex justify-center">
       <div
         id="personalInfoCard"
-        class="p-4 pt-8 xl:p-16 rounded-2xl shadow-lg z-50 bg-white relative"
+        class="p-4 pt-12 xl:p-16 rounded-2xl shadow-lg z-50 bg-white relative"
       >
         <!-- Language Selector -->
-        <div class="absolute top-4 right-4">
+        <div class="absolute top-0 right-0 lg:top-4 lg:right-4 pt-1">
           <LanguageSelector currentLocale="en" currentPath={currentPath} />
         </div>
 
-        <div class="flex xl:block gap-4 justify-between">
+        <div class="flex xl:block gap-4 lg:justify-between">
           <img
-            class="rounded-full size-16 md:size-12 mb-4"
+            class="rounded-full size-24 md:size-12 mb-4"
             src="/diego.webp"
             alt="Diego Carvajal - Senior Frontend Engineer"
           />
@@ -53,7 +53,7 @@ const currentPath = Astro.url.pathname;
         </div>
         
         <div class="mb-2">
-          <h2 class="text-xl lg:text-2xl font-semibold text-blue-800 mb-2">
+          <h2 class="text-xl lg:text-2xl font-semibold text-[#075985] mb-2">
             {t.hero.title}
           </h2>
           <p class="text-base lg:text-lg text-gray-600 mb-1">
@@ -67,13 +67,13 @@ const currentPath = Astro.url.pathname;
 
         <nav class="flex gap-4 mt-8 flex-wrap">
           <SocialPill
-            href="https://drive.google.com/file/d/YOUR_CV_LINK_HERE"
+            href="/src/assets/CV_DiegoCarvajal_2025.pdf"
             download="Diego-Carvajal-CV-2025.pdf"
           >
             <CVIcon class="size-5 md:size-5" />
             {t.hero.downloadCV}
           </SocialPill>
-          <SocialPill href="https://linkedin.com/in/luis-diego-carvajal">
+          <SocialPill href="https://www.linkedin.com/in/luis-diego-carvajal/?locale=en_US">
             <LinkedInIcon class="size-5 md:size-5" />
             LinkedIn
           </SocialPill>
@@ -117,7 +117,7 @@ const currentPath = Astro.url.pathname;
         {t.sections.aboutMe}
       </h2>
 
-      <article class="max-w-[800px]">
+      <article class="max-w-[1200px]">
         <p class="text-lg text-gray-700 mb-4 leading-relaxed">
           {t.about.paragraph1}
         </p>

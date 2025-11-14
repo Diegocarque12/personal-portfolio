@@ -56,8 +56,8 @@ export const projectsData: Record<string, ProjectData> = {
       "Supabase",
       "PostgreSQL",
       "Tailwind CSS",
-      "Zustand",
       "React Hook Form",
+      "Material Design",
     ],
     liveUrl: "https://primefit.coach",
     heroImage: "/projects/primefit.webp",
@@ -144,9 +144,9 @@ export const projectsData: Record<string, ProjectData> = {
           "Documenting architectural decisions greatly facilitates future maintenance",
         ],
         nextSteps: [
-          "Implement native mobile app with React Native",
+          "Impelement my own design system focused on UX with Shadcn as base",
+          "Implement native mobile app with React Native or other technologies",
           "Add push notification system for workout reminders",
-          "Develop payment and subscription module",
           "Integrate with wearables and popular fitness apps",
         ],
       },
@@ -225,9 +225,9 @@ export const projectsData: Record<string, ProjectData> = {
           "Documentar decisiones arquitectónicas facilita enormemente el mantenimiento futuro",
         ],
         nextSteps: [
-          "Implementar aplicación móvil nativa con React Native",
+          "Implementar mi propio design system enfocado en experiencia de usuario con Shadcn como base",
+          "Implementar aplicación móvil nativa con React Native o explorando otras tecnologías",
           "Agregar sistema de notificaciones push para recordatorios de entrenamientos",
-          "Desarrollar módulo de pagos y suscripciones",
           "Integrar con wearables y aplicaciones de fitness populares",
         ],
       },
@@ -237,15 +237,16 @@ export const projectsData: Record<string, ProjectData> = {
   dask: {
     slug: "dask",
     duration: {
-      en: "2023",
-      es: "2023",
+      en: "2024",
+      es: "2024",
     },
     technologies: [
-      "Next.js 13",
+      "React 18",
       "TypeScript",
       "Supabase",
       "PostgreSQL",
       "Tailwind CSS",
+      "Zustant",
     ],
     heroImage: "/projects/mobile-dask-dashboard.png",
     gallery: [

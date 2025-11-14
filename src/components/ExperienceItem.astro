@@ -1,15 +1,19 @@
 ---
+import type { Locale } from "../i18n/translations";
+import { getTranslations } from "../i18n/translations";
+
 interface Props {
   title: string;
   company: string;
-  description?: string;
-  achievements?: string[];
+  achievements: string[];
   link?: string;
   date: string;
   technologies: string[];
+  locale?: Locale;
 }
 
-const { title, company, description, achievements, link, date, technologies } = Astro.props;
+const { title, company, achievements, link, date, technologies, locale = "en" } = Astro.props;
+const t = getTranslations(locale);
 ---
 
 <div class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border bg-gray-500">
@@ -23,22 +27,14 @@ const { title, company, description, achievements, link, date, technologies } = 
     {company}
   </h4>
   
-  {description && (
-    <p class="mb-4 text-base font-normal text-gray-600 text-pretty">
-      {description}
-    </p>
-  )}
-  
-  {achievements && (
-    <ul class="mb-4 space-y-2 list-none">
-      {achievements.map((achievement) => (
-        <li class="text-base text-gray-700 flex items-start gap-2">
-          <span class="text-[#f5a64b] mt-1.5 flex-shrink-0">▸</span>
-          <span class="text-pretty">{achievement}</span>
-        </li>
-      ))}
-    </ul>
-  )}
+  <ul class="mb-4 space-y-2 list-none">
+    {achievements.map((achievement) => (
+      <li class="text-base text-gray-700 flex items-start gap-2">
+        <span class="text-[#f5a64b] mt-1.5 flex-shrink-0">▸</span>
+        <span class="text-pretty">{achievement}</span>
+      </li>
+    ))}
+  </ul>
   
   <div class="flex mb-4 flex-wrap gap-2">
     {
@@ -65,9 +61,9 @@ const { title, company, description, achievements, link, date, technologies } = 
     text-gray-700
     transition
     hover:scale-105 hover:bg-gray-50 hover:border-gray-400 w-max"
-        aria-label={`Visitar sitio web de ${company}`}
+        aria-label={`${t.experience.visitWebsite} ${company}`}
       >
-        Visitar sitio web
+        {t.experience.visitWebsite}
         <svg
           class="w-3 h-3 ms-2 rtl:rotate-180"
           aria-hidden="true"

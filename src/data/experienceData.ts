@@ -27,7 +27,6 @@ export const experienceData: ExperienceData[] = [
       en: "May 2024 - Present",
       es: "Mayo 2024 - Presente",
     },
-    link: "https://www.transunion.com/",
     technologies: [
       "React",
       "Vue 3",
