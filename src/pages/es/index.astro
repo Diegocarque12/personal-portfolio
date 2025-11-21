@@ -1,44 +1,44 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Badge from "../components/Badge.astro";
-import SectionContainer from "../components/SectionContainer.astro";
-import LinkedInIcon from "../components/icons/LinkedIn.astro";
-import CVIcon from "../components/icons/CV.astro";
-import SocialPill from "../components/SocialPill.astro";
-import GitHubIcon from "../components/icons/GitHub.astro";
-import MailIcon from "../components/icons/Mail.astro";
-import Experience from "../components/Experience.astro";
-import Briefcase from "../components/icons/Briefcase.astro";
-import CodeIcon from "../components/icons/Code.astro";
-import ProjectsIcon from "../components/icons/Projects.astro";
-import Projects from "../components/Projects.astro";
-import ToTop from "../components/ToTop.astro";
-import Footer from "../components/Footer.astro";
-import LanguageSelector from "../components/LanguageSelector.astro";
-import { getTranslations } from "../i18n/translations";
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/Badge.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+import LinkedInIcon from "../../components/icons/LinkedIn.astro";
+import CVIcon from "../../components/icons/CV.astro";
+import SocialPill from "../../components/SocialPill.astro";
+import GitHubIcon from "../../components/icons/GitHub.astro";
+import MailIcon from "../../components/icons/Mail.astro";
+import Experience from "../../components/Experience.astro";
+import Briefcase from "../../components/icons/Briefcase.astro";
+import CodeIcon from "../../components/icons/Code.astro";
+import ProjectsIcon from "../../components/icons/Projects.astro";
+import Projects from "../../components/Projects.astro";
+import ToTop from "../../components/ToTop.astro";
+import Footer from "../../components/Footer.astro";
+import LanguageSelector from "../../components/LanguageSelector.astro";
+import { getTranslations } from "../../i18n/translations";
 
-const t = getTranslations("en"); // English as default
+const t = getTranslations("es"); // Spanish
 const currentPath = Astro.url.pathname;
 ---
 
 <Layout
-  title={`Diego Carvajal - ${t.hero.title} | +5 Years Experience`}
+  title={`Diego Carvajal - ${t.hero.title} | +5 años de experiencia`}
   description={t.hero.description}
 >
   <main class="px-8 md:px-6 z-10">
     <SectionContainer class="py-8 lg:py-28 pb-4 flex justify-center">
       <div
         id="personalInfoCard"
-        class="p-4 pt-12 xl:p-16 rounded-2xl shadow-lg z-50 bg-white relative"
+        class="p-4 pt-8 xl:p-16 rounded-2xl shadow-lg z-50 bg-white relative"
       >
         <!-- Language Selector -->
-        <div class="absolute top-0 right-0 lg:top-4 lg:right-4 pt-1">
-          <LanguageSelector currentLocale="en" currentPath={currentPath} />
+        <div class="absolute -top-4 -right-4 lg:top-4 lg:right-4">
+          <LanguageSelector currentLocale="es" currentPath={currentPath} />
         </div>
 
-        <div class="flex xl:block gap-4 lg:justify-between">
+        <div class="flex xl:block gap-4 justify-between">
           <img
-            class="rounded-full size-24 md:size-12 mb-4"
+            class="rounded-full size-16 md:size-12 mb-4"
             src="/diego.webp"
             alt="Diego Carvajal - Senior Frontend Engineer"
           />
@@ -53,7 +53,7 @@ const currentPath = Astro.url.pathname;
         </div>
         
         <div class="mb-2">
-          <h2 class="text-xl lg:text-2xl font-semibold text-[#075985] mb-2">
+          <h2 class="text-xl lg:text-2xl font-semibold text-blue-800 mb-2">
             {t.hero.title}
           </h2>
           <p class="text-base lg:text-lg text-gray-600 mb-1">
@@ -73,7 +73,7 @@ const currentPath = Astro.url.pathname;
             <CVIcon class="size-5 md:size-5" />
             {t.hero.downloadCV}
           </SocialPill>
-          <SocialPill href="https://www.linkedin.com/in/luis-diego-carvajal/?locale=en_US">
+          <SocialPill href="https://linkedin.com/in/luis-diego-carvajal">
             <LinkedInIcon class="size-5 md:size-5" />
             LinkedIn
           </SocialPill>
@@ -89,27 +89,27 @@ const currentPath = Astro.url.pathname;
       </div>
     </SectionContainer>
 
-    <SectionContainer id="experience" class="pb-4 pt-20 relative">
+    <SectionContainer id="experiencia" class="pb-4 pt-20 relative">
       <h2
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <Briefcase class="size-7" />
         {t.sections.experience}
       </h2>
-      <Experience locale="en" />
+      <Experience locale="es" />
     </SectionContainer>
 
-    <SectionContainer id="projects" class="pb-4 pt-20">
+    <SectionContainer id="proyectos" class="pb-4 pt-20">
       <h2
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
         <ProjectsIcon class="size-7" />
         {t.sections.projects}
       </h2>
-      <Projects locale="en" />
+      <Projects locale="es" />
     </SectionContainer>
 
-    <SectionContainer id="about-me" class="pb-4 pt-20">
+    <SectionContainer id="sobre-mi" class="pb-4 pt-20">
       <h2
         class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-gray-900"
       >
@@ -117,7 +117,7 @@ const currentPath = Astro.url.pathname;
         {t.sections.aboutMe}
       </h2>
 
-      <article class="max-w-[1200px]">
+      <article class="max-w-[800px]">
         <p class="text-lg text-gray-700 mb-4 leading-relaxed">
           {t.about.paragraph1}
         </p>
